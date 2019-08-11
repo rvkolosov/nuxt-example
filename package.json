@@ -11,9 +11,14 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
+    "@nuxtjs/auth": "^4.8.1",
     "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/pwa": "^3.0.0-0"
+    "@nuxtjs/dotenv": "^1.4.0",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/yandex-metrika": "^0.1.2",
+    "laravel-echo": "^1.5.4",
+    "nuxt": "^2.0.0",
+    "socket.io-client": "^2.2.0"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0"

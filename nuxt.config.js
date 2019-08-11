@@ -1,5 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
+require('dotenv').config()
+
 export default {
   mode: 'universal',
   /*
@@ -30,6 +32,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '@/plugins/laravel-echo', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -44,12 +47,28 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/auth',
+    '@nuxtjs/dotenv',
+    [
+      '@nuxtjs/yandex-metrika',
+      {
+        id: '53870884',
+        webvisor: true,
+        clickmap:true,
+        // useCDN:false,
+        trackLinks:true,
+        // accurateTrackBounce:true,
+      }
+    ],
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    'baseURL': process.env.LARAVEL_ENDPOINT,
+    'proxyHeaders': false,
+    'credentials': false,
   },
   /*
   ** vuetify module configuration
@@ -58,12 +77,12 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
+          primary: colors.blue,
+          accent: colors.grey,
+          secondary: colors.amber,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
@@ -71,6 +90,33 @@ export default {
         }
       }
     }
+  },
+  auth: {
+    strategies: {
+      password_grant: {
+        _scheme: 'local',
+        endpoints: {
+          login: {
+            url: 'oauth/token',
+            method: 'post',
+            propertyName: 'access_token'
+          },
+          logout: false,
+          user: {
+            url: 'api/user'
+          }
+        }
+      },
+    },
+    redirect: {
+      login: '/auth/login',
+      home: '/',
+    },
+  },
+  env: {
+    laravel_endpoint: process.env.LARAVEL_ENDPOINT,
+    laravel_echo_port: process.env.LARAVEL_ECHO_PORT,
+    laravel_echo_endpoint: process.env.LARAVEL_ECHO_ENDPOINT
   },
   /*
   ** Build configuration
