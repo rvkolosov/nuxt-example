@@ -49,10 +49,10 @@ export default {
     return {
       drawer: false,
       items: [
-        { icon: 'apps', title: 'Welcome', to: '/' },
-          { icon: 'list', title: 'Todo', to: '/todos'},
-          { icon: 'lock', title: 'Secret', to: '/secret'},
-          { icon: 'chat', title: 'Rooms', to: '/rooms'}
+        { icon: 'mdi-apps', title: 'Welcome', to: '/' },
+          { icon: 'mdi-format-list-numbered', title: 'Todo', to: '/todos'},
+          { icon: 'mdi-lock', title: 'Secret', to: '/secret'},
+          { icon: 'mdi-chat', title: 'Rooms', to: '/rooms'}
       ],
       title: 'Nuxt Example'
     }
