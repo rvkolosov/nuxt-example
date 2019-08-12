@@ -8,9 +8,9 @@
                     </v-toolbar>
                     <v-card-text>
                         <v-form v-model="valid">
-                            <v-text-field prepend-icon="email" name="email" label="Е-мейл" type="email" required
+                            <v-text-field prepend-icon="mdi-email" name="email" label="Е-мейл" type="email" required
                                           v-model="email" :rules="emailRules"></v-text-field>
-                            <v-text-field prepend-icon="lock" name="password" label="Пароль" id="password" type="password" required
+                            <v-text-field prepend-icon="mdi-lock" name="password" label="Пароль" id="password" type="password" required
                                           v-model="password" :rules="passwordRules"></v-text-field>
                         </v-form>
                     </v-card-text>
