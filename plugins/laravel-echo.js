@@ -8,11 +8,6 @@ export default () => {
     host: process.env.laravel_endpoint + ':' + process.env.laravel_echo_port,
     disableStats: true,
     encrypted: true,
-    authEndpoint: process.env.laravel_echo_endpoint,
-    auth: {
-      headers: {
-        Authorization: window.localStorage.getItem('auth._token.password_grant')
-      }
-    }
+    authEndpoint: process.env.laravel_echo_endpoint
   })
 }

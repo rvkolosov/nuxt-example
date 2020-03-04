@@ -63,23 +63,19 @@ export default {
     }
   },
   methods: {
-    async login() {
-      const redirect = this.$auth.$state.redirect
-        ? this.$auth.$state.redirect
-        : '/'
+    login() {
+      this.$axios.get('airlock/csrf-cookie').then(
+        function() {
+          this.$auth.loginWith('airlock', {
+            data: {
+              email: this.email,
+              password: this.password
+            }
+          })
+        }.bind(this)
+      )
 
-      await this.$auth.loginWith('password_grant', {
-        data: {
-          grant_type: 'password',
-          client_id: process.env.PASSPORT_PASSWORD_GRANT_ID,
-          client_secret: process.env.PASSPORT_PASSWORD_GRANT_SECRET,
-          scope: '*',
-          username: this.email,
-          password: this.password
-        }
-      })
-
-      this.$router.push(redirect)
+      this.$router.back()
     }
   }
 }

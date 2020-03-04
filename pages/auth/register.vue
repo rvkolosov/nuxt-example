@@ -74,21 +74,17 @@ export default {
     }
   },
   methods: {
-    async register() {
-      await this.$axios.post('register', {
+    register() {
+      this.$axios.post('register', {
         name: this.name,
         email: this.email,
         password: this.password,
         password_confirmation: this.password
       })
 
-      await this.$auth
-        .loginWith('password_grant', {
+      this.$auth
+        .loginWith('airlock', {
           data: {
-            grant_type: 'password',
-            client_id: process.env.PASSPORT_PASSWORD_GRANT_ID,
-            client_secret: process.env.PASSPORT_PASSWORD_GRANT_SECRET,
-            scope: '*',
             username: this.email,
             password: this.password
           }
