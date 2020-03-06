@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 import colors from 'vuetify/es5/util/colors'
 
 export default {
@@ -21,9 +19,6 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  server: {
-    port: process.env.DEPLOYMENT_PORT
-  },
   /*
    ** Customize the progress-bar color
    */
@@ -35,7 +30,9 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '@/plugins/laravel-echo', mode: 'client' }],
+  plugins: [
+    { src: '@/plugins/laravel-echo', mode: 'client' }
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -53,21 +50,16 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: process.env.LARAVEL_ENDPOINT,
-    proxyHeaders: false,
-    credentials: true,
-    headers: {
-      'X-Requested-With': 'XMLHttpRequest',
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    }
+    'baseURL': process.env.LARAVEL_ENDPOINT,
+    'proxyHeaders': false,
+    'credentials': false,
   },
   /*
    ** vuetify module configuration
@@ -92,28 +84,24 @@ export default {
   },
   auth: {
     strategies: {
-      airlock: {
+      password_grant: {
         _scheme: 'local',
         endpoints: {
           login: {
-            url: 'login',
-            method: 'post'
+            url: 'oauth/token',
+            method: 'post',
+            propertyName: 'access_token'
           },
-          logout: {
-            url: 'logout',
-            method: 'post'
-          },
+          logout: false,
           user: {
             url: 'api/user'
           }
-        },
-        tokenRequired: false,
-        tokenType: false
-      }
+        }
+      },
     },
     redirect: {
       login: '/auth/login',
-      home: '/'
+      home: '/',
     },
   },
   env: {
