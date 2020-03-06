@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 import colors from 'vuetify/es5/util/colors'
 
 export default {
@@ -18,6 +20,9 @@ export default {
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+  },
+  server: {
+    port: process.env.DEPLOYMENT_PORT
   },
   /*
    ** Customize the progress-bar color
