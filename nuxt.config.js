@@ -93,7 +93,7 @@ export default {
         _scheme: 'local',
         endpoints: {
           login: {
-            url: 'oauth/token',
+            url: process.env.SECURITY_URL + '/login',
             method: 'post',
             propertyName: 'access_token'
           },

@@ -1,0 +1,20 @@
+{
+  "name": "secutity-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --experimental-modules index.mjs",
+    "server": "node --experimental-modules index.mjs"
+  },
+  "author": "crychik@ya.ru",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "description": ""
+}
