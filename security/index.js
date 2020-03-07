@@ -32,7 +32,7 @@ app.post('/login', function(req, res) {
     })
     .then(
       (response) => {
-        res.send(response)
+        res.send(response.data)
       },
       (reject) => {
         res.send('Access denied')
