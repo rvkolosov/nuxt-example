@@ -6,11 +6,12 @@ before_script:
   - npm run build
   - cd security
   - npm install
-  - chown -R www-data:www-data /var/www/nuxt-example
+  - sudo chown -R www-data:www-data /var/www/nuxt-example
 deploying:
   stage: deploy
   script:
     - echo "Deployed"
+    - sudo su root
     - pm2 restart nuxt-example
     - pm2 restart nuxt-example-security
     - pm2 save
