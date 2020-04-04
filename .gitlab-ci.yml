@@ -4,10 +4,13 @@ before_script:
   - git pull
   - npm install
   - npm run build
+  - cd security
+  - npm install
   - chown -R www-data:www-data /var/www/nuxt-example
 deploying:
   stage: deploy
   script:
     - echo "Deployed"
     - pm2 restart nuxt-example
+    - pm2 restart nuxt-example-security
     - pm2 save
