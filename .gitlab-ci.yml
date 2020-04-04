@@ -1,0 +1,13 @@
+before_script:
+  - echo "Before script"
+  - cd /var/www/nuxt-example
+  - git pull
+  - npm install
+  - npm run build
+  - chown -R www-data:www-data /var/www/nuxt-example
+deploying:
+  stage: deploy
+  script:
+    - echo "Deployed"
+    - pm2 restart nuxt-example
+    - pm2 save
