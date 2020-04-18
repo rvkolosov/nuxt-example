@@ -84,8 +84,10 @@ export default {
 
       await this.$auth
         .loginWith('password_grant', {
-          username: this.email,
-          password: this.password
+          data: {
+            username: this.email,
+            password: this.password
+          }
         })
         .then((res) => {
           this.$router.push('/')

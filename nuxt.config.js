@@ -35,16 +35,15 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    { src: '@/plugins/laravel-echo', mode: 'client' }
-  ],
+  plugins: [],
   /*
    ** Nuxt.js dev-modules
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    '@nuxtjs/laravel-echo',
   ],
   /*
    ** Nuxt.js modules
@@ -109,10 +108,14 @@ export default {
       home: '/',
     },
   },
-  env: {
-    laravel_endpoint: process.env.LARAVEL_ENDPOINT,
-    laravel_echo_port: process.env.LARAVEL_ECHO_PORT,
-    laravel_echo_endpoint: process.env.LARAVEL_ECHO_ENDPOINT
+  env: {},
+  echo: {
+    broadcaster: 'socket.io',
+    host: process.env.LARAVEL_ENDPOINT + ':' + process.env.LARAVEL_ECHO_PORT,
+    disableStats: true,
+    encrypted: true,
+    authEndpoint: process.env.LARAVEL_ECHO_ENDPOINT,
+    authModule: true
   },
   /*
    ** Build configuration

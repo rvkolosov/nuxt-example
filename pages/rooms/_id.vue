@@ -59,7 +59,8 @@ export default {
     })
   },
   mounted() {
-    window.Echo.private('rooms.' + this.room.id)
+    this.$echo
+      .private(`rooms.${this.room.id}`)
       .listen('.new.room.message', (data) => {
         this.messages.push(data)
 
@@ -77,7 +78,7 @@ export default {
   },
   methods: {
     async sendMessage() {
-      this.$axios.setHeader('X-Socket-Id', window.Echo.socketId())
+      this.$axios.setHeader('X-Socket-Id', this.$echo.socketId())
 
       await this.$axios
         .post('api/messages', { body: this.newMessage, room_id: this.room.id })
@@ -90,7 +91,7 @@ export default {
       this.newMessage = ''
     },
     writingMessage() {
-      window.Echo.private('rooms.' + this.room.id).whisper('typing', {
+      this.$echo.private(`rooms.${this.room.id}`).whisper('typing', {
         name: this.$auth.user.name
       })
     }
