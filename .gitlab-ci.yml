@@ -1,17 +1,17 @@
-before_script:
-  - echo "Before script"
-  - cd /var/www/nuxt-example
-  - git pull
-  - npm install
-  - npm run build
-  - cd security
-  - npm install
-  - sudo chown -R www-data:www-data /var/www/nuxt-example
-deploying:
+prod:
+  only:
+    - master
+  tags:
+    - prod
   stage: deploy
   script:
-    - echo "Deployed"
-    - sudo su root
+    - cd /var/www/nuxt-example
+    - git pull
+    - npm install
+    - npm run build
+    - cd security
+    - npm install
+    - sudo chown -R www-data:www-data /var/www/nuxt-example
     - pm2 restart nuxt-example
     - pm2 restart nuxt-example-security
     - pm2 save

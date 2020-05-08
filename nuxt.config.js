@@ -43,7 +43,7 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify',
-    '@nuxtjs/laravel-echo',
+    '@nuxtjs/laravel-echo'
   ],
   /*
    ** Nuxt.js modules
@@ -54,16 +54,16 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/auth',
+    '@nuxtjs/auth'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    'baseURL': process.env.LARAVEL_ENDPOINT,
-    'proxyHeaders': false,
-    'credentials': false,
+    baseURL: process.env.LARAVEL_ENDPOINT,
+    proxyHeaders: false,
+    credentials: false
   },
   /*
    ** vuetify module configuration
@@ -101,12 +101,12 @@ export default {
             url: 'api/user'
           }
         }
-      },
+      }
     },
     redirect: {
       login: '/auth/login',
-      home: '/',
-    },
+      home: '/'
+    }
   },
   env: {},
   echo: {

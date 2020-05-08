@@ -9,11 +9,13 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "cordova": "nuxt generate --config-file=cordova.config.js && rm -R cordova/www/* && cp -R dist/* cordova/www/ && cd cordova && cordova build && cd .. && npm run copy-applications",
+    "copy-applications": "rm -R applications/* && cp -r cordova/platforms/ios/build/emulator/NuxtExample.app applications && cp cordova/platforms/android/app/build/outputs/apk/debug/app-debug.apk applications"
   },
   "dependencies": {
     "@nuxtjs/auth": "^4.9.1",
-    "@nuxtjs/axios": "^5.9.7",
+    "@nuxtjs/axios": "^5.10.3",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/laravel-echo": "^1.1.0",
     "@nuxtjs/pwa": "^3.0.0-0",
@@ -24,11 +26,11 @@
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
-    "@nuxtjs/eslint-module": "^1.0.0",
-    "@nuxtjs/vuetify": "^1.11.0",
+    "@nuxtjs/eslint-module": "^1.2.0",
+    "@nuxtjs/vuetify": "^1.11.2",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.1.0",
-    "eslint-config-prettier": "^6.10.1",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-loader": "^3.0.4",
     "eslint-plugin-nuxt": "^0.5.2",
     "eslint-plugin-prettier": "^3.1.3",
