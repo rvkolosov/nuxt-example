@@ -12,6 +12,6 @@ prod:
     - cd security
     - npm install
     - sudo chown -R www-data:www-data /var/www/nuxt-example
-    - pm2 restart nuxt-example
-    - pm2 restart nuxt-example-security
-    - pm2 save
+    - sudo pm2 restart nuxt-example
+    - sudo pm2 restart nuxt-example-security
+    - sudo pm2 save
