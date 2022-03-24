@@ -20,7 +20,7 @@
     "@nuxtjs/laravel-echo": "^1.1.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "acorn": ">=6.4.1",
-    "minimist": ">=1.2.2",
+    "minimist": ">=1.2.6",
     "nuxt": "^2.12.2",
     "socket.io-client": "^2.3.0"
   },
